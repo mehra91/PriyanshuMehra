@@ -12,7 +12,7 @@ export default function TotalFollowers() {
       <p className="text-white text-md font-semibold mb-5 ">Total Followers</p>
       
       {/* Heart Icon */}
-      <div className="text-8xl mb-6 ">❤️</div>
+      <div className="text-8xl mb-6 ">💕</div>
       
       <p className="text-white  font-semibold text-4xl">{totalFollower}</p>
       <p className="text-slate-400 text-sm mt-2 ">{totalFollower} &nbsp;Users Followed</p>

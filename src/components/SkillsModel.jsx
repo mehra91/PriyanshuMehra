@@ -55,6 +55,7 @@ export default function SkillsModel({ isOpen, onClose }) {
     },
   };
 
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -119,16 +120,7 @@ export default function SkillsModel({ isOpen, onClose }) {
                     <p className="text-white font-semibold text-sm mt-1">
                       {skill.name}
                     </p>
-
-                    {/* Years Badge */}
-                    {/* <motion.span
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1 + index * 0.05 }}
-                      className="inline-block bg-emerald-500/20 text-emerald-400 text-xs font-semibold px-2 py-1 rounded-full border border-emerald-500/50"
-                    >
-                      {skill.years}
-                    </motion.span> */}
+            
                   </motion.div>
                 ))}
               </motion.div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import {skillsData} from '../assets/img.js'
 
 export default function SkillsCard({ onCardClick }) {
   return (
@@ -10,7 +11,7 @@ export default function SkillsCard({ onCardClick }) {
       onClick={onCardClick} className="bg-emerald-500 rounded-2xl p-5 text-white cursor-pointer hover:scale-105 ease-in-out duration-700">
       <p className="text-md font-semibold text-white mb-4">Skills</p>
       <div>
-        <p className="text-5xl font-bold mb-2">10</p>
+        <p className="text-5xl font-bold mb-2">{skillsData.length}</p>
         <p className="text-emerald-100 mt-2">Professional Skills</p>
       </div>
     </motion.div>

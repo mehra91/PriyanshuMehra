@@ -25,13 +25,13 @@ export default function Portfolio() {
           {/* Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-max">
             {/* Left Column - Project Complete & Followers */}
-            <div className="md:col-span-1 space-y-4">
+            <div className="md:col-span-1 space-y-3">
               <ProjectComplete />
               <TotalFollowers />
             </div>
 
             {/* Center Column - Profile & Experience */}
-            <div className="md:col-span-2 space-y-4">
+            <div className="md:col-span-2 space-y-3">
               <div className="grid grid-cols-3 sm:grid-cols-2 gap-4">
                 <ProfileCard />
                 <Headline />
@@ -50,7 +50,7 @@ export default function Portfolio() {
             </div>
 
             {/* Right Column - Testimonial & Contact */}
-            <div className="md:col-span-1 space-y-4">
+            <div className="md:col-span-1 space-y-3">
               <Testimonial />
               <ContactInfo />
             </div>

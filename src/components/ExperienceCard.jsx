@@ -33,11 +33,13 @@ export default function ExperienceCard() {
 
   return (
     <motion.div
-      onClick={handleResumeClick}
-      className="bg-amber-500 rounded-2xl p-5 text-white cursor-pointer hover:scale-105 ease-in-out duration-700">
-      <p className=" font-semibold text-white text-md mb-4">Experience</p>
+    whileHover={{ scale: 1.02, y: -5 }}
+    whileTap={{ scale: 0.98 }}
+    onClick={handleResumeClick}
+      className="bg-amber-500 rounded-2xl p-5 text-white cursor-pointer  ease-in-out duration-700">
+      <p className=" font-semibold text-white text-md mb-2">Experience</p>
       <div>
-        <p className="text-5xl font-bold mb-1">
+        <p className="text-5xl font-bold ">
           {avgExp()}y
         </p>
         <p className="text-amber-100 mt-2">Years of Experience</p>

@@ -44,7 +44,25 @@ export default function TotalFollowers() {
   }, []);
 
   const handleFollower = async () => {
-    if (!userIP || hasFollowed) return;
+    if (!userIP) return;
+
+    // Check if already followed FIRST
+    if (hasFollowed) {
+      toast.error("This ip has already followed.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return;
+    }
+
+    // Show processing toast
+    const toastId = toast.loading("Processing ...", {
+      position: "top-right",
+    });
 
     const ipRef = ref(database, `followers/ips/${userIP}`);
 
@@ -57,7 +75,7 @@ export default function TotalFollowers() {
       const followerRef = ref(database, 'followers/count');
       const snapshot = await get(followerRef);
 
-      const current = snapshot.exists() ? snapshot.val() : 0  ;
+      const current = snapshot.exists() ? snapshot.val() : 0;
       const newCount = current + 1;
 
       await set(followerRef, newCount);
@@ -65,28 +83,32 @@ export default function TotalFollowers() {
       setTotalFollower(newCount);
       setHasFollowed(true);
 
-      toast.success("💖 Thanks for following!", {
+      // Dismiss loading and show success
+      toast.dismiss(toastId);
+      toast.success(" Thanks for following", {
         position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
+        autoClose: 3000,
+        hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: false,
+        pauseOnHover: true,
         draggable: true,
       });
 
     } catch (err) {
       console.log(err);
-      toast.error("Something went wrong!", {
+      toast.dismiss(toastId);
+      toast.error("Something went wrong! ", {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 3000,
+        closeOnClick: true,
       });
     }
   };
 
   if (loading) {
     return (
-      <div className="bg-slate-800/60 backdrop-blur rounded-2xl p-8 text-center border border-slate-700/50">
-        <p className="text-slate-400">Loading...</p>
+      <div className="bg-black/85 backdrop-blur rounded-2xl p-8 text-center border border-black/50">
+        <p className="text-white/80 font-bold">Loading...</p>
       </div>
     );
   }
@@ -94,25 +116,25 @@ export default function TotalFollowers() {
   return (
     <motion.div
       onClick={handleFollower}
-      whileHover={!hasFollowed ? { scale: 1.05, y: -5 } : {}}
+     whileHover={{ scale: 1.02, y: -5 }}
       whileTap={!hasFollowed ? { scale: 0.98 } : {}}
-      className={`bg-black/80 backdrop-blur rounded-2xl p-8 text-center border transition-all duration-700 ${
+      className={`bg-black/80 backdrop-blur cursor-pointer rounded-2xl p-8 text-center border-black/50 transition-all duration-700 ${
         hasFollowed
           ? 'border-slate-700'
-          : 'border-slate-700/50 cursor-pointer'
+          : 'border-slate-700/50 '
       }`}
     >
-      <p className="text-slate-400 text-sm font-semibold mb-8">
+      <p className="text-white text-lg font-semibold mb-2">
         Total Followers
       </p>
 
-      <div className="text-7xl mb-6">❤️</div>
+      <div className="text-8xl mb-4">💞</div>
 
-      <p className="text-slate-300 font-semibold text-2xl">
+      <p className="text-white font-semibold text-2xl">
         {totalFollower}
       </p>
 
-      <p className="text-slate-400 text-sm">
+      <p className="text-slate-400 text-sm mt-2">
         {totalFollower} Users Followed
       </p>
     </motion.div>

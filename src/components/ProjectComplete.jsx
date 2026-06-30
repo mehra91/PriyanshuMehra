@@ -1,10 +1,12 @@
 import React from 'react';
-
+import { motion } from 'framer-motion';
 export default function ProjectComplete() {
   return (
-    <div className="bg-black/85 backdrop-blur rounded-2xl p-8 text-center border border-black/50 hover:scale-105 ease-in-out duration-700 cursor-pointer">
-      <h3 className="text-white text-md font-semibold mb-5">Project Complete</h3>
-      
+    <motion.div
+      whileHover={{ scale: 1.02, y: -5 }}
+      className="bg-black/85 backdrop-blur rounded-2xl p-8 text-center border border-black/50 s ease-in-out duration-700 cursor-pointer">
+      <h3 className="text-white text-lg font-semibold mb-4">Project Complete</h3>
+
       {/* Circular Progress */}
       <div className="flex justify-center mb-5">
         <div className="relative w-40 h-40">
@@ -40,6 +42,6 @@ export default function ProjectComplete() {
 
       <p className="text-white font-bold text-4xl ">5+</p>
       <p className="text-slate-400 text-sm mt-2">Completed 5+ Projects</p>
-    </div>
+    </motion.div>
   );
 }

@@ -9,8 +9,8 @@ export default function ContactInfo() {
   ];
 
   return (
-    <div className="bg-black/85 backdrop-blur rounded-2xl p-6 border border-black/50">
-      <p className="text-slate-400 text-md font-semibold mb-4">Contact Info</p>
+    <div className="bg-black/85 backdrop-blur rounded-2xl p-6 border border-black/50 ">
+      <p className="text-slate-400 text-md font-semibold mb-6">Contact Info</p>
       
       <div className="grid grid-cols-2 gap-2 ">
         {contacts.map((contact) => (

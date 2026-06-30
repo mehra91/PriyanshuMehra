@@ -1,8 +1,38 @@
-@import "tailwindcss";
+@import "tailwindcss";  
+:root {
+  --toastify-color-success: #07bc0c;
+  --toastify-color-error: #bc1007;
+  --toastify-toast-min-height: 2px;
+  --toastify-text-color-light: #ffffff;
+  --toastify-color-dark: #07bc0c;
+  --toastify-toast-width: 300px;
+  --toastify-toast-border-radius: 8px;
+}
 
+/* Override Toastify Success Toast */
+.Toastify__toast--success {
+  background-color: white !important;
+  color: green !important;
+  min-height: 2px !important;
+}
+
+/* Override Toastify Error Toast */
+.Toastify__toast--error {
+  background-color: white !important;
+  color: red !important;
+  min-height: 2px !important;
+}
+
+/* Override Toastify Loading Toast */
+.Toastify__toast--loading {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  min-height: 2px !important;
+}
 * {
 
   box-sizing: border-box;
+
 }
 
 html, body, #root {
@@ -19,3 +49,4 @@ body {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
   color: #e2e8f0;
 }
+

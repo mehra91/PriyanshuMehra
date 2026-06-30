@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Headline() {
   const headlines = [
@@ -18,13 +19,14 @@ export default function Headline() {
 
 
   return (
-    <div
+    <motion.div
+    whileHover={{scale: 1.02, y: -5 }}
       onClick={nextHeadline}
-      className="bg-violet-600 rounded-2xl p-8 text-white hover:scale-105 ease-in-out duration-700 cursor-pointer ">
-      <p className="text-sm font-semibold text-violet-100 mb-2">Headline</p>
+      className="bg-violet-600 rounded-2xl p-5 text-white  ease-in-out duration-700 cursor-pointer ">
+      <p className="text-lg font-semibold text-violet-100 mb-2">Headline</p>
       <h2 className="text-4xl font-bold">
         {headlines[index]}
       </h2>
-    </div>
+    </ motion.div>
   );
 }

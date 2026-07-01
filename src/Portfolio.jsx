@@ -23,7 +23,7 @@ export default function Portfolio() {
       <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
         <div className="max-w-7xl mx-auto">
           {/* Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-max">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 auto-rows-max">
             {/* Left Column - Project Complete & Followers */}
             <div className="md:col-span-1 space-y-3">
               <ProjectComplete />

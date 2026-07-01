@@ -1,4 +1,4 @@
-import WPImg from "./WP.jpg";
+
 import htmlImg from "./Html.png";
 import cssImg from "./CSS3.png";
 import jsImg from "./Js.png";

@@ -1,10 +1,25 @@
-import {React,useState,useEffect}from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { React, useState, useEffect } from 'react';
+import { motion, AnimatePresence, delay } from 'framer-motion';
 import { X, MapPin, Calendar, Clock, Mail, SquareArrowOutUpRight } from 'lucide-react';
 import img from '../assets/WP.jpg'
 
 export default function ProfileModel({ isOpen, onClose }) {
+  const [showContent, setShowContent] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  
+
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 1200); // after curtains finish
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowContent(false);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,6 +28,7 @@ export default function ProfileModel({ isOpen, onClose }) {
 
     return () => clearInterval(interval);
   }, []);
+
   const profileData = [
     { icon: MapPin, value: "Haldwani, Uttarakhand" },
     { icon: Calendar, value: "03 August, 2004" },
@@ -33,88 +49,135 @@ export default function ProfileModel({ isOpen, onClose }) {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
+ const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 1.2,
     },
-  };
+  },
+  exit: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: -1, 
+    },
+  },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
+ const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeINOut",
+    },
+  },
+};
+
+  const leftOverlayVariants = {
+    hidden: { x: "-100%" },
     visible: {
-      opacity: 1,
       x: 0,
       transition: {
-        duration: 0.6,
-        ease: 'easeInOut',
+        duration: 1.5,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      x: "-100%",
+      transition: {
+        duration: 2.5,
+        ease: "easeInOut",
       },
     },
   };
 
-  const backdropVariants = {
-    hidden: { opacity: 0 },
+  const rightOverlayVariants = {
+    hidden: { x: "100%" },
     visible: {
-      opacity: 1,
+      x: 0,
       transition: {
-        duration: 0.6,
-        ease: 'easeInOut',
+        duration: 1.5,
+        ease: "easeInOut",
       },
     },
     exit: {
-      opacity: 0,
+      x: "100%",
       transition: {
-        duration: 0.6,
-        ease: 'easeInOut',
+        duration: 2.5,
+        ease: "easeInOut",
       },
     },
   };
 
-  const modelVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeInOut',
-      },
+  // Modal content fade in
+  const modalContentVariants = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.2,
+      delay:0.5,
+      ease: "easeInOut",
     },
-    exit: {
-      opacity: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeInOut',
-      },
+  },
+  exit: {
+    opacity: 0,
+    y: 80,
+    transition: {
+      duration:0.5,
+      ease: "easeInOut",
     },
-  };
+  },
+};
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+         
+          {/* Left Black Overlay */}
           <motion.div
-            variants={backdropVariants}
+            variants={leftOverlayVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
+            className="fixed top-0 left-0 h-screen w-1/2 bg-zinc-900 z-40"
+          />
+          {/* Right Black Overlay */}
+          <motion.div
+            variants={rightOverlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed top-0 right-0 h-screen w-1/2 bg-zinc-900 z-40"
           />
 
           {/* Model */}
+         {showContent && ( 
           <motion.div
-            variants={modelVariants}
+            variants={modalContentVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
           >
-            <div className="bg-black   rounded-3xl p-12 shadow-2xl max-w-screen  flex items-center justify-center flex-col w-full relative">
+            <div className="black  p-12 shadow-2xl max-w-screen flex items-center justify-center flex-col w-full  h-full relative pointer-events-auto">
               {/* Close Button */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -129,11 +192,10 @@ export default function ProfileModel({ isOpen, onClose }) {
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: 'easeInOut' }}
-                className="flex justify-center mb-8 w-45 h-45 rounded-full overflow-hidden  "
+                transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.9 }}
+                className="flex justify-center mb-8 w-45 h-45 rounded-full overflow-hidden"
               >
-                <img src={img} className='h-45 w-45 rounded-full  object-cover
-                object-top-right  ' />
+                <img src={img} className='h-45 w-45 rounded-full object-cover object-top-right' alt="Profile" />
               </motion.div>
 
               {/* Profile Data - Line by Line */}
@@ -157,10 +219,6 @@ export default function ProfileModel({ isOpen, onClose }) {
                       </span>
 
                       <div className="flex-1">
-                        <p className="text-slate-400 text-sm font-semibold">
-                          {item.label}
-                        </p>
-
                         {item.link ? (
                           <a
                             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${item.value}`}
@@ -181,6 +239,7 @@ export default function ProfileModel({ isOpen, onClose }) {
 
             </div>
           </motion.div>
+          )}
         </>
       )}
     </AnimatePresence>

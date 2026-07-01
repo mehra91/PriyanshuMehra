@@ -8,7 +8,7 @@ export default function Headline() {
     "Full-Stack Developer",
     "Backend Developer",
     "Frontend Developer",
-    "Mern Stack "
+    "Mern Stack Developer "
   ];
 
   const [index, setIndex] = useState(0);

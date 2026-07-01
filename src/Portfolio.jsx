@@ -8,7 +8,7 @@ import ExperienceCard from './components/ExperienceCard';
 import SkillsCard from './components/SkillsCard';
 import TotalFollowers from './components/TotalFollowers';
 import ContactInfo from './components/ContactInfo';
-import ImageCard from './components/ImageCard';
+import GitRepo from './components/GitRepo';
 import SkillsModel from './components/SkillsModel';
 
 
@@ -31,15 +31,15 @@ export default function Portfolio() {
             </div>
 
             {/* Center Column - Profile & Experience */}
-            <div className="md:col-span-2 space-y-3">
+            <div className="md:col-span-2 space-y-5">
               <div className="grid grid-cols-3 sm:grid-cols-2 gap-4">
                 <ProfileCard />
                 <Headline />
 
               </div>
-              <div className='md:col-span-2 space-y-3  '>
+              <div className='md:col-span-2 space-y-1  '>
 
-                <ImageCard />
+                <GitRepo />
 
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

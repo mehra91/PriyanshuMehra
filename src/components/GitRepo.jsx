@@ -1,14 +1,21 @@
-import React from 'react'
-import img from '../assets/WP.jpg'
+import React from "react";
+import { GitHubCalendar } from "react-github-calendar";
 
 const GitRepo = () => {
   return (
-    <div className="    bg-black rounded-lg h-72 flex items-center justify-center overflow-hidden ">
-      <img src={img} alt="Profile" className="object-fill  h-96 w-auto  bg-cover shadow-2xl transform transition duration-500 ease-in-out  cursor-move rounded-lg" />
-         
+    <div className="bg-black rounded-lg p-8 flex justify-center overflow-x-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent ">
+      <GitHubCalendar
+        username="mehra91"
+        blockSize={12}
+        blockMargin={5}
+        fontSize={14}
+        theme={{
+          light: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+          dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+        }}
+      />
     </div>
-  )
-  
-}
+  );
+};
 
-export default GitRepo
+export default GitRepo;

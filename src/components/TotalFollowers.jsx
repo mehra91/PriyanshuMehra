@@ -128,7 +128,7 @@ export default function TotalFollowers() {
         Total Followers
       </p>
 
-      <div className="text-8xl mb-4">💞</div>
+      <div className="text-8xl mb-4 hover:animate-pulse">💕</div>
 
       <p className="text-white font-semibold text-2xl">
         {totalFollower}

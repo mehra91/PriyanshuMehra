@@ -10,17 +10,17 @@ export default function ContactInfo() {
 
   return (
     <div className="bg-black/85 backdrop-blur rounded-2xl p-6 border border-black/50 ">
-      <p className="text-slate-400 text-md font-semibold mb-6">Contact Info</p>
+      <p className="text-slate-400 text-md font-semibold mb-4">Contact Info</p>
       
       <div className="grid grid-cols-2 gap-2 ">
         {contacts.map((contact) => (
           <button
             key={contact.id}
-            className={`${contact.bg} ${contact.textColor || 'text-white'} rounded-lg p-4 flex items-center justify-center font-semibold text-lg hover:opacity-90 transition-opacity cursor-pointer`}
+            className={`${contact.bg} ${contact.textColor || 'text-white'} rounded-lg p-2 flex items-center justify-center font-semibold text-lg hover:opacity-90 transition-opacity cursor-pointer`}
             aria-label={contact.label}
           >
             <a href={contact.link}>
-              <img src={contact.img} alt={contact.label} className='hover:scale-130 ease-in-out duration-700'  />
+              <img src={contact.img} alt={contact.label} className='hover:scale-110 h-27 ease-in-out duration-700'  />
             </a>
           </button>
         ))}

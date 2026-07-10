@@ -30,10 +30,9 @@ export default function Portfolio() {
 
             {/* Center Column - Profile & Experience */}
             <div className="md:col-span-2 space-y-5">
-              <div className="grid grid-cols-3 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ProfileCard />
                 <Headline />
-
               </div>
               <div className='md:col-span-2 space-y-1  '>
 

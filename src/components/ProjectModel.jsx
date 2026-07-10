@@ -1,25 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink ,ArrowLeft,ArrowRight } from 'lucide-react';
 
 
 export default function ProjectsModel({ isOpen, onClose }) {
   const [currentProject, setCurrentProject] = useState(0);
 
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
+
   const projects = [
     {
       title: "FoodUI",
       description: "Food related web3 project",
-      image:'/FoodUI.png',
+      image: '/FoodUI.png',
       link: "https://foodie-ten-tau.vercel.app/",
-      tech: [ "Reactjs", "Nodejs",'TailwindCss','Express.js','MongoDB']
+      tech: ["Reactjs", "Nodejs", 'TailwindCss', 'Express.js', 'MongoDB']
     },
     {
-      title: "Project 2",
-      description: "Your project description",
-      image: "https://via.placeholder.com/400x300?text=Project+2",
-      link: "https://example.com",
-      tech: ["Tech1", "Tech2"]
+      title: "BidForDeal",
+      description: "An Auction Web ",
+      image: "/bidForDeal.png",
+      link: "https://www.bidfordeal.com/",
+      tech: ["React.js", "TailwindCSS"]
+    },
+     {
+      title: "FoodUI",
+      description: "Food related web3 project",
+      image: '/FoodUI.png',
+      link: "https://foodie-ten-tau.vercel.app/",
+      tech: ["Reactjs", "Nodejs", 'TailwindCss', 'Express.js', 'MongoDB']
+    },
+     {
+      title: "Project 4",
+      description: "An Auction Web ",
+      image: "/bidForDeal.png",
+      link: "https://www.bidfordeal.com/",
+      tech: ["React.js", "TailwindCSS"]
     }
   ];
 
@@ -74,7 +98,7 @@ export default function ProjectsModel({ isOpen, onClose }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className=" inset-0 bg-black z-40 w-1/3 h-[90vh] rounded-lg absolute top-10 "
+            className="inset-0 bg-black z-40 w-full sm:w-1/2 lg:w-2/5 xl:w-1/3 h-[90vh]  rounded-lg absolute top-8"
           />
 
 
@@ -84,103 +108,107 @@ export default function ProjectsModel({ isOpen, onClose }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className=" z-50 rounded-3xl  shadow-2xl max-w-lg h-[90vh] w-1/3  absolute  top-10 left-0 pointer-events-auto  flex flex-col  items-center justify-center "
+            className="z-50 rounded-3xl shadow-2xl max-w-xl h-[90vh] w-full sm:w-1/2 lg:w-2/5 xl:w-1/3 absolute top-10 left-0 pointer-events-auto flex flex-col items-center justify-start sm:justify-center px-4 sm:px-6 py-6 overflow-y-auto "
           >
-        
-              {/* Close Button */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={onClose}
-                className="absolute top-4 right-0 text-slate-400 hover:text-white cursor-pointer z-10"
-              >
-                <X size={28} />
-              </motion.button>
 
-              {/* Project Image */}
-              <motion.div
-                key={currentProject}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="mb-8  h-64 w-[60vh] flex items-center justify-center rounded-2xl cursor-pointer hover:scale-105 duration-700"
-              >
-                <img
-                  src={projects[currentProject].image}
-                  alt={projects[currentProject].title}
-                  className="w-full h-64 object-cover rounded-2xl"
-                />
-              </motion.div>
+            {/* Close Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onClose}
+              className="absolute top-0 right-4 sm:right-2 text-slate-400 hover:text-white cursor-pointer z-10"
+            >
+              <X size={28} />
+            </motion.button>
 
-              {/* Project Title & Description */}
-              <motion.div
-                key={`title-${currentProject}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.1 }}
-              >
-                <h2 className="text-3xl font-bold text-white mb-2">
+            {/* Project Image */}
+            <motion.div
+              key={currentProject}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="mb-8 mt-8 sm:mb:0 sm:mt:0 w-full  h-90 sm:h-56  shrink-0 flex items-center justify-center rounded-2xl cursor-pointer "
+            >
+              <img
+                src={projects[currentProject].image}
+                alt={projects[currentProject].title}
+                className="w-full h-full  sm:object-fill object-cover rounded-2xl"
+              />
+            </motion.div>
+
+            {/* Project Title & Description */}
+            <motion.div
+              key={`title-${currentProject}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.1 }}
+              className="w-full flex items-start justify-center flex-col"
+            >
+              <div className='flex items-start justify-start flex-col sm:items-center sm:justify-between sm:flex-row p-1 w-full mb-2'>
+
+                <h2 className="text-2xl sm:text-3xl   font-bold text-white ">
                   {projects[currentProject].title}
                 </h2>
-                <p className="text-slate-400 text-sm mb-4">
+                <p className="text-slate-400 text-sm ">
                   {projects[currentProject].description}
                 </p>
+              </div>
 
-                {/* Tech Stack */}
-                <div className="flex gap-2 mb-6 flex-wrap">
-                  {projects[currentProject].tech.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-emerald-600/20 text-emerald-400 rounded-full text-xs font-semibold border border-emerald-600/50"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+              {/* Tech Stack */}
+              <div className="flex gap-2 mb-2  flex-wrap ">
+                {projects[currentProject].tech.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1 bg-emerald-600/20 text-emerald-400 rounded-full text-xs font-semibold border border-emerald-600/50"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
 
-              {/* Link */}
-              <motion.a
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
-                href={projects[currentProject].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 font-semibold flex items-center px-15 h-8 gap-2 mb-6  w-full"
+            {/* Link */}
+            <motion.a
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
+              href={projects[currentProject].link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 font-semibold flex items-center px-2 sm:px-2 h-8 gap-2 mb-6 w-full break-all sm:break-normal shrink-0"
+            >
+              {projects[currentProject].link}
+              <ExternalLink size={16} className="shrink-0" />
+            </motion.a>
+
+            {/* Navigation Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.3 }}
+              className="flex  justify-evenly h-12 w-full  items-center shrink-0 "
+            >
+              <button
+                onClick={prevProject}
+                className="px-3 sm:px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-all cursor-pointer text-sm sm:text-base"
               >
-                {projects[currentProject].link}
-                <ExternalLink size={16} />
-              </motion.a>
+               <ArrowLeft/>
+              </button>
 
-              {/* Navigation Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.3 }}
-                className="flex gap-4 justify-evenly  h-12 w-full items-center "
+              <span className="text-slate-400 text-sm">
+                {currentProject + 1} / {projects.length}
+              </span>
+
+              <button
+                onClick={nextProject}
+                className="px-3 sm:px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all cursor-pointer text-sm sm:text-base"
               >
-                <button
-                  onClick={prevProject}
-                  className="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-all cursor-pointer"
-                >
-                  Previous
-                </button>
+                <ArrowRight/>
+              </button>
+            </motion.div>
 
-                <span className="text-slate-400 text-sm">
-                  {currentProject + 1} / {projects.length}
-                </span>
 
-                <button
-                  onClick={nextProject}
-                  className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all cursor-pointer"
-                >
-                  Next
-                </button>
-              </motion.div>
-
-           
           </motion.div>
         </>
       )}

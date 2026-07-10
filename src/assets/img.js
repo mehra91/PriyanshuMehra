@@ -1,13 +1,13 @@
 
-import htmlImg from "./Html.png";
-import cssImg from "./CSS3.png";
-import jsImg from "./Js.png";
-import reactImg from "./reactjs.png";
+import htmlImg from "./html.png";
+import cssImg from "./css3.png";
+import jsImg from "./js.png";
+import reactImg from "./react.png";
 import nodeImg from "./nodejs.svg";
-import expressImg from "./expressjs.png";
-import mongoDbImg from "./MongoDb.png";
-import gitImg from "./Git.png";
-import githubImg from "./GitHub.png";
+import expressImg from "./express.png";
+import mongoDbImg from "./mongodb.png";
+import gitImg from "./git.png";
+import githubImg from "./github.png";
 import postmanImg from './postman.png'
 
 

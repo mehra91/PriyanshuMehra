@@ -1,14 +1,14 @@
 
-import htmlImg from "./html.png";
-import cssImg from "./css3.png";
-import jsImg from "./js.png";
+import htmlImg from "./html3.png";
+import cssImg from "./css.png";
+import jsImg from "./js4.png";
 import reactImg from "./react.png";
 import nodeImg from "./nodejs.svg";
 import expressImg from "./express.png";
-import mongoDbImg from "./mongodb.png";
-import gitImg from "./git.png";
-import githubImg from "./github.png";
-import postmanImg from './postman.png'
+import mongoDbImg from "./mongodb5.png";
+import gitImg from "./git1.png";
+import githubImg from "./github2.png";
+import postmanImg from './postman6.png'
 
 
 export const skillsData = [

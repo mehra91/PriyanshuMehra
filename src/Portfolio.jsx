@@ -3,15 +3,13 @@ import { useState } from 'react';
 import ProjectComplete from './components/ProjectComplete';
 import ProfileCard from './components/ProfileCard';
 import Headline from './components/Headline';
-import Testimonial from './components/Testimonial';
+import EducationCard from './components/EducationCard';
 import ExperienceCard from './components/ExperienceCard';
 import SkillsCard from './components/SkillsCard';
 import TotalFollowers from './components/TotalFollowers';
 import ContactInfo from './components/ContactInfo';
 import GitRepo from './components/GitRepo';
 import SkillsModel from './components/SkillsModel';
-
-
 
 export default function Portfolio() {
   const [isSkillsModelOpen, setIsSkillsModelOpen] = useState(false);
@@ -49,9 +47,9 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Right Column - Testimonial & Contact */}
+            {/* Right Column - EducationCard & Contact */}
             <div className="md:col-span-1 space-y-3">
-              <Testimonial />
+              <EducationCard />
               <ContactInfo />
             </div>
           </div>

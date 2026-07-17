@@ -31,20 +31,7 @@ export default function ProjectsModel({ isOpen, onClose }) {
       link: "https://www.bidfordeal.com/",
       tech: ["React.js", "TailwindCSS"]
     },
-     {
-      title: "FoodUI",
-      description: "Food related web3 project",
-      image: '/FoodUI.png',
-      link: "https://foodie-ten-tau.vercel.app/",
-      tech: ["Reactjs", "Nodejs", 'TailwindCss', 'Express.js', 'MongoDB']
-    },
-     {
-      title: "Project 4",
-      description: "An Auction Web ",
-      image: "/bidForDeal.png",
-      link: "https://www.bidfordeal.com/",
-      tech: ["React.js", "TailwindCSS"]
-    }
+    
   ];
 
   const leftOverlayVariants = {

@@ -11,7 +11,7 @@ export default function EducationCard() {
         whileHover={{ scale: 1.02, y: -5 }}
         onClick={() => setIsModelOpen(true)}
         className="bg-black/85 backdrop-blur rounded-2xl px-8 py-5 text-center border border-black/50  ease-in-out duration-700 cursor-pointer">
-        <p className="text-white text-xl font-semibold m-2">Education</p>
+        <p className="text-white text-xl font-semibold m-2">Overview</p>
 
         {/* Emoji */}
         <div className=" text-9xl  ">📖</div>

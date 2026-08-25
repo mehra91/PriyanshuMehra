@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GraduationCap, School, Briefcase, X } from 'lucide-react';
+import { title } from 'framer-motion/client'; 
 
 export default function EducationModel({ isOpen, onClose }) {
   const [showContent, setShowContent] = useState(false);
@@ -63,7 +64,16 @@ export default function EducationModel({ isOpen, onClose }) {
         site: 'Onsite'
       },
     },
-  ];
+    {
+      icon: Briefcase,
+      title:"Internship",
+      company:"Empathy Technologies",
+      role:" Web Developer",
+      duration:'· 2 months',
+      site:'Remote',
+
+    }
+  ]; 
 
   const containerVariants = {
     hidden: {
@@ -238,8 +248,8 @@ export default function EducationModel({ isOpen, onClose }) {
                         </span>
 
                         <p className="text-white text-lg font-semibold">{item.title}</p>
-                        <p className="text-slate-400 font-medium text-base">{item.institution}</p>
-                        <p className="text-slate-500 text-sm">{item.year} · {item.detail} </p>
+                        <p className="text-slate-400 font-medium text-base">{item.institution}  {item.company}</p>
+                        <p className="text-slate-500 text-sm">{item.year}{item.role}   {item.duration}  · {item.detail} {item.site}  </p>
 
                         {item.internship && (
                           <motion.div

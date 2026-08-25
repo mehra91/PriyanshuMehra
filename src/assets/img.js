@@ -9,6 +9,8 @@ import mongoDbImg from "./mongodb5.png";
 import gitImg from "./git1.png";
 import githubImg from "./github2.png";
 import postmanImg from './postman6.png'
+import pythonImg from './python.jpg'
+import sqlImg from './Sql.png'
 
 
 export const skillsData = [
@@ -22,5 +24,7 @@ export const skillsData = [
   { name: "Git", img: gitImg, years: 2025 },
   { name: "GitHub", img: githubImg, years: 2025 },
   { name: "PostMan", img: postmanImg, years: 2025 },
+  { name: "Python", img: pythonImg, years: 2026 },
+  { name: "Sql", img: sqlImg, years: 2024 },
   
 ];
